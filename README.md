@@ -16,7 +16,7 @@ For now read this page: [Per-Monitor DPI Aware in Windows Forms](https://emoacht
 
 ###How to use
 
-Just change the base class of your form to from Salar.HDpiForm class and you're done!
+Just change the base class of your form to Salar.HDpiForm and you're done!
 
 ```csharp
 public partial class frmSampleForm : Salar.HDpiForm
