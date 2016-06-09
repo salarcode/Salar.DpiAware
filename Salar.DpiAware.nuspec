@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Salar.HDpiForm</id>
+		<version>1.0.0.0</version>
+		<title>HDpiForm - High DPI Per-Monitor Windows Forms</title>
+		<authors>emoacht, Salar Khalilzadeh</authors>
+		<owners>Salar Khalilzadeh</owners>
+		<licenseUrl>https://github.com/salarcode/Salar.DpiAware/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/salarcode/Salar.DpiAware/</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			Enables you to have DPI aware windows forms, per monitor.
+			More info: https://github.com/salarcode/Salar.DpiAware/
+		</description>
+		<releaseNotes>
+			
+		</releaseNotes>
+		<copyright>Copyright 2016</copyright>
+		<tags>DPI WindowsForms Dpi-Aware</tags>
+		<dependencies></dependencies>
+	</metadata>
+	<files>
+		<file src="Salar.DpiAware\Bin\Release\*.dll" target="lib\net40" />
+		<file src="Salar.DpiAware\Bin\Release\*.xml" target="lib\net40" />
+	</files>
+</package>
