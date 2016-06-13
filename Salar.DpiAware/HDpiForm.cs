@@ -13,6 +13,7 @@ namespace Salar.DpiAware
 	/// emoacht, Salar Khalilzadeh
 	/// </authors>
 	/// <url>
+	/// Original work:
 	/// https://emoacht.wordpress.com/2013/10/30/per-monitor-dpi-aware-in-windows-forms/
 	/// Fixed and improved by Salar Khalilzadeh
 	/// </url>
