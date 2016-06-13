@@ -6,7 +6,7 @@ Automatically updates forms respecting current monitors' DPI.
 The original work is thanks to emoacht: 
 [https://emoacht.wordpress.com/2013/10/30/per-monitor-dpi-aware-in-windows-forms/](https://emoacht.wordpress.com/2013/10/30/per-monitor-dpi-aware-in-windows-forms/)
 
-###[NuGet Package](https://www.nuget.org/packages/Salar.Bois/)
+###[NuGet Package](https://www.nuget.org/packages/Salar.DpiAware/)
 ```
 PM> Install-Package Salar.DpiAware
 ```
