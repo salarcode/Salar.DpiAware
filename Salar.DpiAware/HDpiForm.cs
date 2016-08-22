@@ -276,7 +276,7 @@ namespace Salar.DpiAware
 			uint dpiX = 0;
 			uint dpiY = 0;
 
-			int result = Win32Api.GetHDpiFormonitor(handleMonitor, Win32Api.Monitor_DPI_Type.MDT_Default, out dpiX, out dpiY);
+			int result = Win32Api.GetDpiForMonitor(handleMonitor, Win32Api.Monitor_DPI_Type.MDT_Default, out dpiX, out dpiY);
 
 			if (result != 0) // If not S_OK (= 0)
 			{
