@@ -36,6 +36,8 @@ namespace Salar.DpiAware
 
 		private bool _designMode = false;
 
+		private bool? _isEightOneOrNewer = null;
+
 		public delegate void OnDpiChangeEvent(HDpiForm sender, Font newFont, float newDpi, float changeFactor);
 
 		/// <summary>
@@ -66,15 +68,21 @@ namespace Salar.DpiAware
 			if (!IsEightOneOrNewer()) return;
 
 			const int WM_DPICHANGED = 0x02e0; // 0x02E0 from WinUser.h
+			const int WM_NCCREATE = 0x0081; // Winuser.h (include Windows.h)
 
-			if (m.Msg == WM_DPICHANGED)
+			if (m.Msg == WM_NCCREATE)
+			{
+				// This function must be called from WM_NCCREATE during the initialization of a new window
+				Win32Api.CallEnableNonClientDpiScaling(this.Handle);
+			}
+			else if (m.Msg == WM_DPICHANGED)
 			{
 				// wParam
 				short lo = Win32Api.GetLoWord(m.WParam.ToInt32());
 
 				//// lParam
 				//W32.RECT r = (W32.RECT)Marshal.PtrToStructure(m.LParam, typeof(W32.RECT));
-				
+
 				// Hold new DPI as target for adjustment.
 				_newDpiValue = lo;
 
@@ -136,7 +144,7 @@ namespace Salar.DpiAware
 			if (OnDpiChange != null)
 				OnDpiChange(this, Font, _newDpiValue, factor);
 		}
-		
+
 		// Get new location of this window after DPI change.
 		private void MoveWindow()
 		{
@@ -316,11 +324,12 @@ namespace Salar.DpiAware
 		private bool IsEightOneOrNewer()
 		{
 			// To get this value correctly, it is required to include ID of Windows 8.1 in the manifest file.
-			return (6.3 <= GetVersion());
+			return _isEightOneOrNewer ??
+			       (_isEightOneOrNewer = (6.3 <= GetOsVersion())).Value;
 		}
 
 		// Get OS version in Double.
-		private double GetVersion()
+		private double GetOsVersion()
 		{
 			var os = Environment.OSVersion;
 
