@@ -103,19 +103,22 @@ namespace Salar.DpiAware
 			var user32 = LoadLibrary("User32.dll");
 			if (user32 == IntPtr.Zero)
 				return false;
+			try
+			{
+				var dpiScalling = GetProcAddress(user32, "EnableNonClientDpiScaling");
 
-			var dpiScalling = GetProcAddress(user32, "EnableNonClientDpiScaling");
+				if (dpiScalling == IntPtr.Zero)
+					return false;
 
-			if (dpiScalling == IntPtr.Zero)
-				return false;
+				var enableNonClientDpiScaling = (EnableNonClientDpiScaling)
+					Marshal.GetDelegateForFunctionPointer(dpiScalling, typeof(EnableNonClientDpiScaling));
 
-			var enableNonClientDpiScaling = (EnableNonClientDpiScaling)
-				Marshal.GetDelegateForFunctionPointer(dpiScalling, typeof(EnableNonClientDpiScaling));
-
-			bool theResult = enableNonClientDpiScaling(hWnd);
-
-			FreeLibrary(user32);
-			return theResult;
+				return enableNonClientDpiScaling(hWnd);
+			}
+			finally
+			{
+				FreeLibrary(user32);
+			}
 		}
 	}
 
