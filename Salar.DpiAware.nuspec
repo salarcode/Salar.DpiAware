@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>Salar.DpiAware</id>
-		<version>1.1.0.0</version>
+		<version>1.2.1.0</version>
 		<title>HDpiForm - High DPI Per-Monitor Windows Forms</title>
 		<authors>emoacht, Salar Khalilzadeh</authors>
 		<owners>Salar Khalilzadeh</owners>
@@ -14,7 +14,8 @@
 			More info: https://github.com/salarcode/Salar.DpiAware/
 		</description>
 		<releaseNotes>
-			
+			Adding support for Windows 10's new API for automatic display scaling of the non-client area.
+			Package fixes.
 		</releaseNotes>
 		<copyright>Copyright 2016</copyright>
 		<tags>DPI WindowsForms Dpi-Aware</tags>
